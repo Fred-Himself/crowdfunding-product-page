@@ -1,0 +1,1032 @@
+html {
+  font-size: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+body {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0) 120px), #fafafa url("../images/image-hero-desktop.jpg") no-repeat top center;
+  font: 400 16px 'Commissioner', sans-serif;
+  width: 100%;
+  height: 100%;
+}
+
+a, a:visited, a:hover {
+  text-decoration: none;
+}
+
+#wrapper {
+  position: relative;
+  max-width: 72.375rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.overlay {
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.6)), to(rgba(0, 0, 0, 0)));
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
+  z-index: 200;
+}
+
+.fading {
+  visibility: hidden;
+}
+
+@-webkit-keyframes fade-in {
+  from {
+    visibility: hidden;
+    opacity: 0;
+  }
+  1% {
+    visibility: visible;
+    opacity: 0;
+  }
+  to {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    visibility: hidden;
+    opacity: 0;
+  }
+  1% {
+    visibility: visible;
+    opacity: 0;
+  }
+  to {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fade-out {
+  from {
+    visibility: visible;
+    opacity: 1;
+  }
+  99% {
+    visibility: visible;
+    opacity: 0;
+  }
+  to {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    visibility: visible;
+    opacity: 1;
+  }
+  99% {
+    visibility: visible;
+    opacity: 0;
+  }
+  to {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  body {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0) 120px), #fafafa url("../images/image-hero-mobile.jpg") no-repeat top center;
+    background-size: 100% auto;
+  }
+  .fade-in {
+    -webkit-animation: fade-in 300ms ease-in-out forwards;
+            animation: fade-in 300ms ease-in-out forwards;
+  }
+  .fade-out {
+    -webkit-animation: fade-out 300ms ease-in-out forwards;
+            animation: fade-out 300ms ease-in-out forwards;
+  }
+}
+
+header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 3rem 0;
+}
+
+#logo img {
+  position: relative;
+  z-index: 300;
+}
+
+#hamburger {
+  display: none;
+  z-index: 300;
+}
+
+#hamburger svg {
+  stroke: white;
+  stroke-width: 2;
+  width: 0.875rem;
+  height: 0.9375rem;
+}
+
+#hamburger path {
+  -webkit-transition: d 300ms;
+  transition: d 300ms;
+}
+
+#hamburger input {
+  width: 0.875rem;
+  height: 0.9375rem;
+  opacity: 0;
+  position: absolute;
+  cursor: pointer;
+}
+
+#hamburger input:checked ~ svg > path {
+  d: path("M1,1 9,9 M5,5 5,5 M1,9 9,1");
+}
+
+#mainNav {
+  font-size: 0.825rem;
+  font-weight: 500;
+  visibility: visible;
+}
+
+#mainNav a {
+  color: white;
+  margin-left: 1.875rem;
+  -webkit-transition: color 300ms ease-in-out;
+  transition: color 300ms ease-in-out;
+}
+
+#mainNav a:hover {
+  color: #e0e0e0;
+}
+
+@media (max-width: 700px) {
+  header {
+    margin: 2rem 0;
+  }
+  #hamburger {
+    display: block;
+  }
+  #mainNav {
+    background-color: white;
+    position: fixed;
+    font-size: 1.125rem;
+    font-weight: 700;
+    opacity: 0;
+    visibility: hidden;
+    top: 5.5rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    text-align: left;
+    border-radius: 0.5rem;
+    overflow: auto;
+    z-index: 200;
+  }
+  #mainNav a {
+    display: block;
+    color: black;
+    margin: 0;
+    padding: 1.5rem;
+  }
+  #mainNav a:first-child {
+    border-bottom: 1px solid #e0e0e0;
+  }
+  #mainNav a:last-child {
+    border-top: 1px solid #e0e0e0;
+  }
+}
+
+main {
+  max-width: 45.625rem;
+  margin: 14.8125rem auto 0;
+}
+
+section {
+  background-color: white;
+  margin-bottom: 1.5rem;
+  border: 1px solid #ededed;
+  border-radius: 0.5rem;
+}
+
+.headTitles {
+  text-align: center;
+}
+
+.headTitles img {
+  margin-top: -1.875rem;
+}
+
+.headTitles h1 {
+  font-size: 1.75rem;
+  margin: 1.625rem 0 1rem;
+}
+
+.headTitles p {
+  color: #7a7a7a;
+}
+
+.btnGroup {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-weight: 500;
+  margin: 3rem;
+  margin-top: 2.5rem;
+}
+
+.btnGroup #btnBack, .btnGroup #btnBookmark {
+  border: 0;
+  border-radius: 1.75rem;
+  cursor: pointer;
+}
+
+.btnGroup #btnBack {
+  background-color: #3cb4ac;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 1.21875rem 2.5rem;
+  color: white;
+  -webkit-transition: 300ms ease-in-out;
+  transition: 300ms ease-in-out;
+}
+
+.btnGroup #btnBack:hover {
+  background-color: #147b74;
+}
+
+.btnGroup #btnBookmark {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  padding-right: 0.375rem;
+}
+
+.btnGroup #btnBookmark span {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: auto 1.125rem;
+}
+
+.btnGroup .bookmark {
+  background-color: #f4f4f4;
+}
+
+.btnGroup .bookmark circle {
+  fill: #2f2f2f;
+}
+
+.btnGroup .bookmark path {
+  fill: #b1b1b1;
+}
+
+.btnGroup .bookmark span {
+  color: #8c8c8c;
+}
+
+.btnGroup .bookmarked {
+  background-color: #f4f8f9;
+}
+
+.btnGroup .bookmarked circle {
+  fill: #147b74;
+}
+
+.btnGroup .bookmarked path {
+  fill: white;
+}
+
+.btnGroup .bookmarked span {
+  color: #147b74;
+}
+
+#keyFigures {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  margin: 2.875rem;
+  margin-bottom: 0;
+}
+
+#keyFigures > div {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+#keyFigures #totalBacked, #keyFigures #totalBackers {
+  border-right: 1px solid #aaa;
+}
+
+#keyFigures #totalBackers, #keyFigures #daysLeft {
+  margin-left: 2.875rem;
+}
+
+#keyFigures .backFigure {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+#keyFigures .backComment {
+  font-size: 0.9425rem;
+  margin-top: 0.5rem;
+  color: #7a7a7a;
+}
+
+#progressBar {
+  background-color: #e0e0e0;
+  margin: 2.375rem 2.875rem 3rem 2.875rem;
+  border-radius: 0.375rem;
+}
+
+#amountBar {
+  background-color: #3cb4ac;
+  width: 89.9%;
+  height: 0.75rem;
+  border-radius: 0.375rem;
+}
+
+#about {
+  padding-bottom: 1.375rem;
+}
+
+.introProject {
+  margin: 2.875rem 2.875rem 2.375rem;
+}
+
+.introProject h2 {
+  font-size: 1.2625rem;
+  margin-bottom: 2.25rem;
+}
+
+.introProject p {
+  margin: 1.875rem 0;
+  line-height: 1.875rem;
+}
+
+.optProject {
+  margin: 0 2.875rem 1.5rem;
+  border: 1px solid #ededed;
+  border-radius: 0.5rem;
+}
+
+.optProject .optTitle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 2.25rem 2rem 1.375rem;
+}
+
+.optProject .optTitle .optPrice {
+  font-size: 0.95rem;
+  color: #3cb4ac;
+}
+
+.optProject p {
+  margin: 0 2rem;
+  line-height: 1.875rem;
+}
+
+.optProject .optTotal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 1.625rem 2rem 2rem;
+}
+
+.optProject .optTotal .optNumber {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #7a7a7a;
+}
+
+.optProject .optTotal .optNumber span {
+  font-weight: 700;
+  font-size: 2rem;
+  margin-right: 0.625rem;
+  color: black;
+}
+
+.optProject .optTotal .optSelect {
+  background-color: rgba(60, 180, 172, 0.6);
+  font-size: 0.825rem;
+  font-weight: 700;
+  padding: 1rem 2.125rem;
+  color: white;
+  border: 0;
+  border-radius: 1.4375rem;
+  cursor: pointer;
+  -webkit-transition: 300ms ease-in-out;
+  transition: 300ms ease-in-out;
+}
+
+.optProject .optTotal .optSelect:hover {
+  background-color: #147b74;
+}
+
+.optProject.disabledProject {
+  cursor: not-allowed;
+  color: #7a7a7a;
+}
+
+.optProject.disabledProject .optTotal span {
+  color: #7a7a7a;
+}
+
+.optProject.disabledProject .optPrice {
+  color: rgba(60, 180, 172, 0.5);
+}
+
+.optProject.disabledProject .optSelect {
+  background-color: #cbcbcb;
+}
+
+.optProject.disabledProject .optSelect:hover {
+  background-color: #cbcbcb;
+  cursor: not-allowed;
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+
+.attribution a {
+  color: #3e52a3;
+}
+
+@media (max-width: 700px) {
+  main {
+    margin-top: 11.875rem;
+  }
+  .headTitles h1 {
+    font-size: 1.25rem;
+    margin: 1.25rem 1.875rem;
+  }
+  .headTitles p {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    margin: 0 0.625rem;
+  }
+  .btnGroup {
+    margin: 1.625rem 1.25rem 2.375rem;
+  }
+  .btnGroup #btnBack {
+    padding: 1.21875rem 3rem;
+  }
+  .btnGroup .bookmark, .btnGroup .bookmarked {
+    background-color: rgba(255, 255, 255, 0);
+  }
+  .btnGroup #btnBookmark span {
+    display: none;
+  }
+  #keyFigures {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin: 0.625rem 0;
+  }
+  #keyFigures > div {
+    margin: 1.375rem 0 1.625rem;
+    text-align: center;
+  }
+  #keyFigures #totalBacked, #keyFigures #totalBackers {
+    position: relative;
+    border-right: 0;
+  }
+  #keyFigures #totalBacked:after, #keyFigures #totalBackers:after {
+    position: absolute;
+    display: block;
+    content: "";
+    width: 5rem;
+    height: 1px;
+    bottom: -1.5625rem;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: #e0e0e0;
+  }
+  #keyFigures #totalBackers, #keyFigures #daysLeft {
+    margin-left: 0;
+  }
+  #keyFigures .backComment {
+    font-size: 0.875rem;
+  }
+  #progressBar {
+    margin: 0.625rem 1.5rem 2.375rem;
+  }
+  #about {
+    padding-bottom: 0.625rem;
+  }
+  .introProject {
+    margin: 2.5rem 1.4375rem 2.25rem;
+  }
+  .introProject h2 {
+    font-size: 1.125rem;
+    margin-bottom: 0.625rem;
+  }
+  .introProject p {
+    font-size: 0.875rem;
+    margin: 1.5rem 0;
+    line-height: 1.5rem;
+  }
+  .optProject {
+    margin: 0 1.5rem 1.5rem;
+  }
+  .optProject .optTitle {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    margin: 1.25rem;
+  }
+  .optProject .optTitle .optName, .optProject .optTitle .optPrice {
+    font-size: 0.875rem;
+  }
+  .optProject .optTitle .optName {
+    margin-bottom: 0.625rem;
+  }
+  .optProject p {
+    font-size: 0.875rem;
+    margin: 1.375rem;
+    line-height: 1.5rem;
+  }
+  .optProject .optTotal {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    margin: 1.625rem 1.25rem;
+  }
+  .optProject .optTotal .optNumber {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.modalBox {
+  display: none;
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.4);
+  -webkit-animation: fade-in 300ms forwards;
+          animation: fade-in 300ms forwards;
+  overflow: auto;
+  z-index: 500;
+}
+
+#optionBox {
+  padding: 184px 24px 36px;
+}
+
+#optionBox .modalContent {
+  max-width: 730px;
+  padding: 48px 46px 24px 46px;
+}
+
+#optionBox .modalContent #closeBtn {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  cursor: pointer;
+}
+
+#optionBox .modalContent h2 {
+  margin-bottom: 20px;
+}
+
+#optionBox .modalContent > p {
+  margin-bottom: 38px;
+}
+
+#thankBox {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 40px 24px;
+}
+
+#thankBox .modalContent {
+  max-width: 540px;
+  padding: 48px 46px 24px 46px;
+  text-align: center;
+}
+
+#thankBox .modalContent img {
+  width: 90px;
+  margin-bottom: 46px;
+}
+
+#thankBox .modalContent h2 {
+  margin-bottom: 18px;
+}
+
+#thankBox .modalContent p {
+  line-height: 30px;
+}
+
+#thankBox .modalContent button {
+  font-weight: 700;
+  border: 0;
+  border-radius: 24px;
+  cursor: pointer;
+  background-color: #3cb4ac;
+  margin: 26px 0;
+  padding: 16px 34px;
+  color: white;
+  border: 1px solid transparent;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+}
+
+#thankBox .modalContent button:hover {
+  background-color: #147b74;
+}
+
+.modalContent {
+  position: relative;
+  background-color: white;
+  width: 100%;
+  margin: auto;
+  border: 1px solid #7a7a7a;
+  border-radius: 10px;
+}
+
+.projectBox {
+  border: 1px solid #c7c7c7;
+  border-radius: 8px;
+  margin-bottom: 22px;
+}
+
+.projectBox.selectedBox {
+  border: 1px solid #147b74;
+}
+
+.projectBox.disabledProject {
+  border: 1px solid #e0e0e0;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.projectBox.disabledProject input + .radioLabel:before {
+  cursor: not-allowed;
+}
+
+.projectBox.disabledProject input + .radioLabel:hover {
+  color: inherit;
+}
+
+.projectBox.disabledProject label, .projectBox.disabledProject .projectPrice {
+  cursor: not-allowed;
+}
+
+.projectIntro {
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: 'a b' 'c c';
+  -ms-grid-columns: auto 1fr;
+      grid-template-columns: auto 1fr;
+  grid-gap: 10px;
+  padding: 32px 26px 32px 30px;
+}
+
+.projectIntro input {
+  position: absolute;
+  opacity: 0;
+}
+
+.projectIntro input + .radioLabel:before {
+  content: '';
+  display: inline-block;
+  position: relative;
+  background-color: #e0e0e0;
+  width: 1.4rem;
+  height: 1.4rem;
+  top: -2px;
+  margin-right: 1.5rem;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid #7a7a7a;
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+}
+
+.projectIntro input + .radioLabel:hover {
+  color: #147b74;
+}
+
+.projectIntro input:checked + .radioLabel:before {
+  background-color: #147b74;
+  -webkit-box-shadow: inset 0 0 0 4px #e0e0e0;
+          box-shadow: inset 0 0 0 4px #e0e0e0;
+}
+
+.projectIntro input:checked:focus + .radioLabel:before {
+  outline: none;
+  border-color: #147b74;
+}
+
+.projectIntro .radioLabel {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: a;
+  font-weight: 700;
+  cursor: pointer;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+}
+
+.projectIntro .projectPrice {
+  font-weight: 500;
+  cursor: pointer;
+  margin-left: 20px;
+  color: #147b74;
+}
+
+.projectIntro .projectNumber {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: b;
+  font-size: 0.875rem;
+  text-align: right;
+  color: #7a7a7a;
+}
+
+.projectIntro .projectNumber span {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: black;
+  margin-right: 10px;
+}
+
+.projectIntro p {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: c;
+  font-size: 15px;
+  padding-left: 46px;
+  line-height: 30px;
+}
+
+.checkedProject {
+  display: none;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0;
+  padding: 1.375rem 1.75rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+.checkedProject .pledgeLabel {
+  font-size: 0.875rem;
+  color: #7a7a7a;
+}
+
+.checkedProject .pledgeValidation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.checkedProject .pledgeValidation .pledgeInput {
+  padding: 0.8125rem 0.625rem 0.8125rem 1.75rem;
+  border: 1px solid #7a7a7a;
+  border-radius: 1.5rem;
+  cursor: pointer;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+}
+
+.checkedProject .pledgeValidation .pledgeInput span {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #7a7a7a;
+}
+
+.checkedProject .pledgeValidation .pledgeInput input {
+  font-weight: 700;
+  width: 3.125rem;
+  border: 0;
+}
+
+.checkedProject .pledgeValidation .pledgeInput input:focus {
+  outline: none;
+}
+
+.checkedProject .pledgeValidation .pledgeInput:hover {
+  border-color: #147b74;
+}
+
+.checkedProject .pledgeValidation .pledgeSubmit {
+  background-color: #3cb4ac;
+  font-weight: 700;
+  cursor: pointer;
+  margin-left: 0.875rem;
+  padding: 1rem 1.625rem;
+  color: white;
+  border: 0;
+  border-radius: 1.5rem;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+}
+
+.checkedProject .pledgeValidation .pledgeSubmit:hover {
+  background-color: #147b74;
+}
+
+@media (max-width: 700px) {
+  #optionBox {
+    padding-top: 120px;
+  }
+  #optionBox .modalContent {
+    padding: 23px;
+    padding-top: 32px;
+    /*
+      max-width: 730px;
+      padding: 48px 46px 24px 46px;*/
+  }
+  #optionBox .modalContent #closeBtn {
+    top: 34px;
+    right: 22px;
+  }
+  #optionBox .modalContent h2 {
+    font-size: 18px;
+    margin-bottom: 24px;
+  }
+  #optionBox .modalContent > p {
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 24px;
+  }
+  #thankBox {
+    padding-top: 100px;
+  }
+  #thankBox .modalContent {
+    padding: 34px 24px 24px 24px;
+  }
+  #thankBox .modalContent img {
+    width: 66px;
+    margin-bottom: 20px;
+  }
+  #thankBox .modalContent p {
+    font-size: 14px;
+    line-height: 26px;
+    margin-bottom: 20px;
+  }
+  #thankBox .modalContent button {
+    margin: 4px 0;
+  }
+  .modalContent {
+    position: relative;
+    background-color: white;
+    width: 100%;
+    margin: auto;
+    border: 1px solid #7a7a7a;
+    border-radius: 10px;
+  }
+  .projectIntro {
+        grid-template-areas: 'a a' 'c c' 'b b';
+    padding: 32px 26px 20px 24px;
+  }
+  .projectIntro input + .radioLabel:before {
+    margin-right: 1rem;
+  }
+  .projectIntro .radioLabel {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-area: a;
+    font-size: 14px;
+  }
+  .projectIntro .projectPrice {
+    display: block;
+    margin-top: 8px;
+    margin-left: 38px;
+  }
+  .projectIntro .projectNumber {
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-area: b;
+    text-align: left;
+    margin: 12px 0;
+  }
+  .projectIntro p {
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-area: c;
+    font-size: 14px;
+    padding-left: 0;
+    margin-top: 26px;
+    line-height: 24px;
+  }
+  .projectIntro.withPledge {
+    padding: 22px 26px 20px 24px;
+  }
+  .projectIntro.withPledge input + .radioLabel:before {
+    top: 12px;
+  }
+  .projectIntro.withPledge p {
+    margin-top: 10px;
+  }
+  .checkedProject {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding: 1.375rem 1rem;
+  }
+  .checkedProject .pledgeLabel {
+    margin-bottom: 1rem;
+  }
+  .checkedProject .pledgeValidation {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .checkedProject .pledgeValidation .pledgeInput {
+    padding: 0.8125rem 0.375rem 0.8125rem 1.125rem;
+  }
+}
+/*# sourceMappingURL=main.css.map */
