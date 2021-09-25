@@ -1,0 +1,413 @@
+// ------------ MODAL BOX : OPTIONS
+
+.modalBox {
+  display: none;
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $black;
+  background-color: rgba($black, 0.4);
+  animation: fade-in 300ms forwards;
+  overflow: auto;
+  z-index: 500;
+}
+
+#optionBox {
+  padding: 184px 24px 36px;
+
+  .modalContent {
+    max-width: 730px;
+    padding: 48px 46px 24px 46px;
+
+    #closeBtn {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      cursor: pointer;
+    }
+  
+    h2 {
+      margin-bottom: 20px;
+    }
+  
+    & > p {
+      margin-bottom: 38px;
+    }
+  }
+}
+
+#thankBox {
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+
+  .modalContent {
+    max-width: 540px;
+    padding: 48px 46px 24px 46px;
+    text-align: center;
+
+    img {
+      width: 90px;
+      margin-bottom: 46px;
+    }
+  
+    h2 {
+      margin-bottom: 18px;
+    }
+  
+    p {
+      line-height: 30px;
+    }
+  
+    button {
+      font-weight: 700;
+      border: 0;
+      border-radius: 24px;
+      cursor: pointer;
+      background-color: $moderateCyan;
+      margin: 26px 0;
+      padding: 16px 34px;
+      color: $white;
+      border: 1px solid transparent;
+      transition: all 300ms ease;
+  
+      &:hover {
+        background-color: $darkCyan;
+      }
+    }
+  }
+}
+
+.modalContent {
+  position: relative;
+  background-color: rgba($white, 1);// <--- à mettre à 1
+  width: 100%;
+  margin: auto;
+  border: 1px solid $darkGray;
+  border-radius: 10px;
+}
+
+.projectBox {
+  border: 1px solid lighten($darkGray, 30%);
+  border-radius: 8px;
+  margin-bottom: 22px;
+
+  &.selectedBox {
+    border: 1px solid $darkCyan;
+  }
+
+  &.disabledProject {
+    border: 1px solid lighten($darkGray, 40%);
+    opacity: 0.6;
+    cursor: not-allowed;
+
+    input {
+      + .radioLabel {
+        &:before {
+          cursor: not-allowed;
+        }
+        &:hover {
+          color: inherit;
+        }
+      }
+    }
+
+    label, .projectPrice {
+      cursor: not-allowed;
+    }
+  }
+}
+
+.projectIntro {
+  display: grid;
+  grid-template-areas:
+    'a b'
+    'c c';
+  grid-template-columns: auto 1fr;
+  grid-gap: 10px;
+  padding: 32px 26px 32px 30px;
+
+  input {
+    position: absolute;
+    opacity: 0;
+
+    + .radioLabel {
+      &:before {
+        content: '';
+        display: inline-block;
+        position: relative;
+        background-color: lighten($darkGray, 40%);
+        width: 1.4rem;
+        height: 1.4rem;
+        top: -2px;
+        margin-right: 1.5rem;
+        text-align: center;
+        vertical-align: middle;
+        border: 1px solid $darkGray;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 300ms ease;
+      }
+      &:hover {
+        color: $darkCyan;
+      }
+    }
+    &:checked {
+      + .radioLabel {
+        &:before {
+          background-color: $darkCyan;
+          box-shadow: inset 0 0 0 4px lighten($darkGray, 40%);
+        }
+      }
+      &:focus {
+        + .radioLabel {
+          &:before {
+            outline: none;
+            border-color: $darkCyan;
+          }
+        }
+      }
+    }
+  }
+
+  .radioLabel {
+    grid-area: a;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 300ms ease;
+  }
+
+  .projectPrice {
+    font-weight: 500;
+    cursor: pointer;
+    margin-left: 20px;
+    color: $darkCyan;
+  }
+
+  .projectNumber {
+    grid-area: b;
+    font-size: 0.875rem;
+    text-align: right;
+    color: $darkGray;
+
+    span {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: $black;
+      margin-right: 10px;
+    }
+  }
+
+  p {
+    grid-area: c;
+    font-size: 15px;
+    padding-left: 46px;
+    line-height:30px;
+  }
+}
+
+.checkedProject {
+  display: none;
+}
+
+.formProject {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 22px 28px;
+  border-top: 1px solid lighten($darkGray, 40%);
+
+  .amountInput {
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding-bottom: 3px;
+    border: 0;
+    border-bottom: 1px solid transparent;
+
+    &:focus {
+      border-bottom: 1px solid $darkCyan;
+      outline: none;
+    }
+  }
+
+  button {
+    font-weight: 700;
+    border: 0;
+    border-radius: 24px;
+    cursor: pointer;
+
+    &.btnAmount {
+      margin-right: 14px;
+      padding: 16px 28px;
+      border: 1px solid $darkGray;
+      transition: all 300ms ease;
+
+      .curAmount {
+        margin-right: 8px;
+        color: $darkGray;
+      }
+
+      .barAmount {
+        visibility: hidden;
+        margin-left: 4px;
+        color: $darkCyan;
+      }
+
+      &:hover {
+        border-color: $darkCyan;
+
+        .barAmount {
+          visibility: visible;
+        }
+      }
+    }
+
+    &.btnContinue {
+      background-color: $moderateCyan;
+      padding: 16px 24px;
+      color: $white;
+      border: 1px solid transparent;
+      transition: all 300ms ease;
+
+      &:hover {
+        background-color: $darkCyan;
+      }
+    }
+  }
+}
+
+// ------------ MEDIA QUERIES
+
+@media(max-width: $breakPoint) {
+  
+  #optionBox {
+    padding-top: 120px;
+
+    .modalContent {
+      padding: 23px;
+      padding-top: 32px;/*
+      max-width: 730px;
+      padding: 48px 46px 24px 46px;*/
+
+      #closeBtn {
+        top: 34px;
+        right: 22px;
+      }
+
+      h2 {
+        font-size: 18px;
+        margin-bottom: 24px;
+      }
+
+      & > p {
+        font-size: 14px;
+        line-height: 24px;
+        margin-bottom: 24px;
+      }
+    }
+  }
+  
+  #thankBox {
+    padding-top: 100px;
+
+    .modalContent {
+      padding: 34px 24px 24px 24px;
+  
+      img {
+        width: 66px;
+        margin-bottom: 20px;
+      }
+    
+      p {
+        font-size: 14px;
+        line-height: 26px;
+        margin-bottom: 20px;
+      }
+    
+      button {
+        margin: 4px 0;
+      }
+    }
+  }
+  
+  .modalContent {
+    position: relative;
+    background-color: rgba($white, 1);// <--- à mettre à 1
+    width: 100%;
+    margin: auto;
+    border: 1px solid $darkGray;
+    border-radius: 10px;
+  }
+
+  .projectIntro {
+    grid-template-areas:
+      'a a'
+      'c c'
+      'b b';
+    padding: 32px 26px 20px 24px;
+
+    input {
+      + .radioLabel {
+        &:before {
+          margin-right: 1rem;
+        }
+      }
+    }
+
+    .radioLabel {
+      grid-area: a;
+      font-size: 14px;
+    }
+
+    .projectPrice {
+      display: block;
+      margin-top: 8px;
+      margin-left: 38px;
+    }
+
+    .projectNumber {
+      grid-area: b;
+      text-align: left;
+      margin: 12px 0;
+    }
+
+    p {
+      grid-area: c;
+      font-size: 14px;
+      padding-left: 0;
+      margin-top: 26px;
+      line-height: 24px;
+    }
+
+    &.withPledge {
+      padding: 22px 26px 20px 24px;
+  
+      input {
+        + .radioLabel {
+          &:before {
+            top: 12px;
+          }
+        }
+      }
+
+      p {
+        margin-top: 10px;
+      }
+    }
+  }
+
+  .formProject {
+    flex-direction: column;
+
+    .amountInput {
+      margin-bottom: 14px;
+      text-align:center;
+    }
+  }
+
+}
