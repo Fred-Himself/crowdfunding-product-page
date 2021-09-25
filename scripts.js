@@ -1,6 +1,6 @@
 // ------------ INITIALIZATION
 
-let sum = 89914, backers = 5007, bambooLeft = 101, blackLeft = 64;
+let sum = 89914, backers = 5007, bambooLeft = 1, blackLeft = 64;
 
 const totalSum = document.querySelector('#totalBacked .backFigure span');
 const totalBackers = document.querySelector('#totalBackers .backFigure');
@@ -10,6 +10,7 @@ const btnHamburger = document.querySelector("#checkMenu");
 const btnMenu = document.querySelector("#hamburger");
 const overlay = document.querySelector('.overlay');
 const menu = document.querySelector('#mainNav');
+const linkMenu = document.querySelectorAll('#mainNav a');
 
 const bookmark = document.querySelector('#btnBookmark');
 const bookmarked = document.querySelector('#btnBookmark span');
@@ -22,7 +23,7 @@ const optionBox = document.querySelector('#optionBox');
 const thankBox = document.querySelector('#thankBox');
 const closeThankBtn = document.querySelector('#closeThankBox');
 
-const continueBtn = document.querySelectorAll('.btnContinue');
+const submitBtn = document.querySelectorAll('.pledgeSubmit');
 
 // ------------ INSERTION OF INITIAL VALUES
 
@@ -87,6 +88,14 @@ btnMenu.addEventListener('click', () => {
   }
 });
 
+linkMenu.forEach(elem => {
+  elem.addEventListener('click', () => {
+    if(menu.classList.contains('fade-in')) {
+      fadeout();
+    }
+  })
+});
+
 overlay.addEventListener('click', fadeout);
 
 // ------------ BOOKMARK BUTTON
@@ -112,7 +121,6 @@ function removeSelection() {
   document.querySelectorAll('.radioButton').forEach(elem => elem.checked = false);
   document.querySelectorAll('.projectBox').forEach(elem => elem.classList.remove('selectedBox'));
   document.querySelectorAll('.projectBox .checkedProject').forEach(elem => elem.style.display = 'none');
-  document.querySelectorAll('.projectBox .amountInput').forEach(elem => elem.value = '');
 }
 
 function modalOpen(id = 1) {
@@ -121,31 +129,17 @@ function modalOpen(id = 1) {
   if(id == 'bambooStand') {
     document.querySelector('#radioTwo').checked = true;
     document.querySelector('#bambooBox').classList.add('selectedBox');
-    document.querySelector('#bambooBox .checkedProject').style.display = 'block';
+    document.querySelector('#bambooBox .checkedProject').style.display = 'flex';
   }
   else if(id == 'blackEdition') {
     document.querySelector('#radioThree').checked = true;
     document.querySelector('#blackEditionBox').classList.add('selectedBox');
-    document.querySelector('#blackEditionBox .checkedProject').style.display = 'block';
+    document.querySelector('#blackEditionBox .checkedProject').style.display = 'flex';
   }
 }
 
-function focusAmount(name) {
-  focusName = document.querySelector('#' + name + ' .checkedProject input');
-  focusName.focus();
-  switch(name) {
-    case 'bambooBox':
-      focusName.value = 25;
-      break;
-    case 'blackEditionBox':
-      focusName.value = 75;
-      break;
-    case 'mahoganyBox':
-      focusName.value = 200;
-      break;
-    default:
-      break;
-  }
+function amountFocus(name) {
+  document.querySelector('#' + name + ' .checkedProject input').focus();
 }
 
 function updateFigures(pledge, type) {
@@ -159,6 +153,7 @@ function updateFigures(pledge, type) {
     document.querySelector('#bambooProject .optNumber span').innerText = bambooLeft;
     document.querySelector('#bambooBox .projectNumber span').innerText = bambooLeft;
     if(bambooLeft == 0) {
+      document.querySelector('#bambooProject').classList.add('disabledProject');
       document.querySelector('#bambooBox').classList.add('disabledProject');
     }
   }
@@ -167,6 +162,7 @@ function updateFigures(pledge, type) {
     document.querySelector('#blackEditionProject .optNumber span').innerText = blackLeft;
     document.querySelector('#blackEditionBox .projectNumber span').innerText = blackLeft;
     if(blackLeft == 0) {
+      document.querySelector('#blackEditionProject').classList.add('disabledProject');
       document.querySelector('#blackEditionBox').classList.add('disabledProject');
     }
   }
@@ -184,7 +180,7 @@ document.querySelectorAll('.radioButton').forEach(elem => {
     let boxElem = elem.parentNode.parentNode.id;
     elem.checked = true;
     document.querySelector('#' + boxElem).classList.add('selectedBox');
-    document.querySelector('#' + boxElem + ' .checkedProject').style.display = 'block';
+    document.querySelector('#' + boxElem + ' .checkedProject').style.display = 'flex';
   });
 });
 
@@ -203,10 +199,9 @@ window.onclick = function(event) {
   }
 }
 
-continueBtn.forEach(elem => {
-  elem.addEventListener('click', (e) => {
-    e.preventDefault();
-    let a = elem.name == 'noReward' ? 0 : document.querySelector('#' + elem.name + ' .amountInput').value;
+submitBtn.forEach(elem => {
+  elem.addEventListener('click', () => {
+    let a = elem.name == 'noReward' ? 0 : document.querySelector('#' + elem.name + ' .priceInput').value;
     switch(elem.name) {
       case 'noReward':
         updateFigures(a, 0);
@@ -219,20 +214,10 @@ continueBtn.forEach(elem => {
           optionBox.style.display = 'none';
           thankBox.style.display = 'flex';
         }
-        else if(a == '') {
-          updateFigures(25, 1);
-          optionBox.style.display = 'none';
-          thankBox.style.display = 'flex';
-        }
         break;
       case 'blackEditionBox':
         if(a >= 75) {
           updateFigures(a, 2);
-          optionBox.style.display = 'none';
-          thankBox.style.display = 'flex';
-        }
-        else if(a == '') {
-          updateFigures(75, 2);
           optionBox.style.display = 'none';
           thankBox.style.display = 'flex';
         }
