@@ -1,6 +1,6 @@
 // ------------ INITIALIZATION
 
-let sum = 89914, backers = 5007, bambooLeft = 1, blackLeft = 64;
+let sum = 89914, backers = 5007, bambooLeft = 101, blackLeft = 64;
 
 const totalSum = document.querySelector('#totalBacked .backFigure span');
 const totalBackers = document.querySelector('#totalBackers .backFigure');
