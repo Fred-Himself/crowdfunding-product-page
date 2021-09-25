@@ -167,11 +167,9 @@
             </p>
           </div>
           <div class="checkedProject">
-            <form action="#" class="formProject">
-              <div>
-                <button type="submit" class="btnContinue" name="noReward">Continue</button>
-              </div>
-            </form>
+            <div class="pledgeValidation">
+              <button type="button" class="pledgeSubmit" name="noReward">Continue</button>
+            </div>
           </div>
         </div>
         <div id="bambooBox" class="projectBox">
@@ -185,13 +183,14 @@
             </p>
           </div>
           <div class="checkedProject">
-            <form action="#" class="formProject">
-              <div><input type="number" min="25" class="amountInput" id="priceBamboo" placeholder="Enter your pledge" /></div>
-              <div>
-                <button type="button" class="btnAmount" onClick="focusAmount('bambooBox')"><span class="curAmount">$</span>25<span class="barAmount">|</span></button>
-                <button type="submit" class="btnContinue" name="bambooBox">Continue</button>
+            <div class="pledgeLabel">Enter your pledge</div>
+            <div class="pledgeValidation">
+              <div class="pledgeInput" onClick="amountFocus('bambooBox')">
+                <span>$</span>
+                <input type="number" min="25" value="25" class="priceInput" id="bambooPledge" />
               </div>
-            </form>
+              <button type="button" class="pledgeSubmit" name="bambooBox">Continue</button>
+            </div>
           </div>
         </div>
         <div id="blackEditionBox" class="projectBox">
@@ -205,13 +204,14 @@
             </p>
           </div>
           <div class="checkedProject">
-            <form action="#" class="formProject">
-              <div><input type="number" min="75" class="amountInput" id="priceBlackEdition" placeholder="Enter your pledge" /></div>
-              <div>
-                <button type="button" class="btnAmount" onClick="focusAmount('blackEditionBox')"><span class="curAmount">$</span>75<span class="barAmount">|</span></button>
-                <button type="submit" class="btnContinue" name="blackEditionBox">Continue</button>
+            <div class="pledgeLabel">Enter your pledge</div>
+            <div class="pledgeValidation">
+              <div class="pledgeInput" onClick="amountFocus('blackEditionBox')">
+                <span>$</span>
+                <input type="number" min="75" value="75" class="priceInput" id="blackEditionPledge" />
               </div>
-            </form>
+              <button type="button" class="pledgeSubmit" name="blackEditionBox">Continue</button>
+            </div>
           </div>
         </div>
         <div id="mahoganyBox" class="projectBox disabledProject">
